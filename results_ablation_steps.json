@@ -1,0 +1,32 @@
+{
+  "0": {
+    "avg_lost_demand": 12.644521841166524,
+    "std_lost_demand": 5.480141178792841,
+    "avg_lost_trips": 8.78,
+    "avg_total_trips": 61.48
+  },
+  "10000": {
+    "avg_lost_demand": 6.995591446523515,
+    "std_lost_demand": 4.910084511560224,
+    "avg_lost_trips": 4.94,
+    "avg_total_trips": 67.6
+  },
+  "20000": {
+    "avg_lost_demand": 6.148861938414058,
+    "std_lost_demand": 4.4168980494608565,
+    "avg_lost_trips": 4.38,
+    "avg_total_trips": 68.44
+  },
+  "50000": {
+    "avg_lost_demand": 6.199185584369648,
+    "std_lost_demand": 4.154858775927612,
+    "avg_lost_trips": 4.4,
+    "avg_total_trips": 68.58
+  },
+  "100000": {
+    "avg_lost_demand": 5.929599337739437,
+    "std_lost_demand": 4.004955765118791,
+    "avg_lost_trips": 4.18,
+    "avg_total_trips": 68.92
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "None": {
+    "avg_lost_rate": 7.7748957021417615,
+    "std_lost_rate": 5.092741625952337,
+    "min_lost_rate": 1.3157894736842104,
+    "max_lost_rate": 24.637681159420293,
+    "avg_total_lost": 5.52
+  },
+  "ELU": {
+    "avg_lost_rate": 6.599670553221999,
+    "std_lost_rate": 4.328518621424091,
+    "min_lost_rate": 0.0,
+    "max_lost_rate": 17.77777777777778,
+    "avg_total_lost": 4.74
+  },
+  "Leaky ReLU": {
+    "avg_lost_rate": 7.080730598844785,
+    "std_lost_rate": 3.9640195703078374,
+    "min_lost_rate": 0.0,
+    "max_lost_rate": 15.555555555555555,
+    "avg_total_lost": 5.0
+  },
+  "PReLU": {
+    "avg_lost_rate": 7.7223335337922405,
+    "std_lost_rate": 4.9031694468329965,
+    "min_lost_rate": 0.0,
+    "max_lost_rate": 23.076923076923077,
+    "avg_total_lost": 5.44
+  }
+}

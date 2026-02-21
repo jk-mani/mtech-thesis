@@ -1,0 +1,79 @@
+{
+  "baseline": {
+    "cost_per_km": 1.0,
+    "lost_penalty": 5.0,
+    "avg_profit": 128.00897128582966,
+    "std_profit": 43.2698050198424,
+    "avg_revenue": 198.2025,
+    "avg_truck_cost": 49.59352871417033,
+    "avg_lost_cost": 20.6,
+    "avg_lost_rate": 5.964079670704199,
+    "avg_truck_distance": 49.59352871417033
+  },
+  "low_cost": {
+    "cost_per_km": 0.5,
+    "lost_penalty": 5.0,
+    "avg_profit": 149.08818124736115,
+    "std_profit": 43.566261897655615,
+    "avg_revenue": 197.8,
+    "avg_truck_cost": 27.711818752638855,
+    "avg_lost_cost": 21.0,
+    "avg_lost_rate": 5.8642603630263705,
+    "avg_truck_distance": 55.42363750527771
+  },
+  "high_cost": {
+    "cost_per_km": 2.0,
+    "lost_penalty": 5.0,
+    "avg_profit": 80.92655754591595,
+    "std_profit": 54.26882135915287,
+    "avg_revenue": 198.3175,
+    "avg_truck_cost": 96.49094245408406,
+    "avg_lost_cost": 20.9,
+    "avg_lost_rate": 5.872756381612154,
+    "avg_truck_distance": 48.24547122704203
+  },
+  "low_penalty": {
+    "cost_per_km": 1.0,
+    "lost_penalty": 2.0,
+    "avg_profit": 135.3501001876773,
+    "std_profit": 41.773694406102074,
+    "avg_revenue": 193.085,
+    "avg_truck_cost": 47.53489981232272,
+    "avg_lost_cost": 10.2,
+    "avg_lost_rate": 7.425147943576613,
+    "avg_truck_distance": 47.53489981232272
+  },
+  "high_penalty": {
+    "cost_per_km": 1.0,
+    "lost_penalty": 10.0,
+    "avg_profit": 93.82501195148878,
+    "std_profit": 46.46749418078514,
+    "avg_revenue": 190.67,
+    "avg_truck_cost": 39.24498804851122,
+    "avg_lost_cost": 57.6,
+    "avg_lost_rate": 8.220461506166263,
+    "avg_truck_distance": 39.24498804851122
+  },
+  "cheap_aggressive": {
+    "cost_per_km": 0.5,
+    "lost_penalty": 10.0,
+    "avg_profit": 124.60424564180059,
+    "std_profit": 47.18122206723387,
+    "avg_revenue": 197.5125,
+    "avg_truck_cost": 28.90825435819941,
+    "avg_lost_cost": 44.0,
+    "avg_lost_rate": 6.134542806905219,
+    "avg_truck_distance": 57.81650871639882
+  },
+  "expensive_conservative": {
+    "cost_per_km": 2.0,
+    "lost_penalty": 2.0,
+    "avg_profit": 97.88160053533485,
+    "std_profit": 54.692183709828,
+    "avg_revenue": 192.6825,
+    "avg_truck_cost": 84.32089946466515,
+    "avg_lost_cost": 10.48,
+    "avg_lost_rate": 7.529744924646943,
+    "avg_truck_distance": 42.16044973233257
+  }
+}

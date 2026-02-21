@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "cost_per_km": 1.0,
+    "lost_penalty": 5.0,
+    "avg_lost_rate": 5.964079670704199,
+    "std_lost_rate": 4.422821885606226,
+    "avg_actions": 392.78,
+    "total_lost": 206,
+    "total_successful": 3447
+  },
+  "low_cost": {
+    "cost_per_km": 0.5,
+    "lost_penalty": 5.0,
+    "avg_lost_rate": 5.8642603630263705,
+    "std_lost_rate": 4.247342819332171,
+    "avg_actions": 380.72,
+    "total_lost": 210,
+    "total_successful": 3440
+  },
+  "high_cost": {
+    "cost_per_km": 2.0,
+    "lost_penalty": 5.0,
+    "avg_lost_rate": 5.872756381612154,
+    "std_lost_rate": 4.336627977104253,
+    "avg_actions": 397.16,
+    "total_lost": 209,
+    "total_successful": 3449
+  },
+  "low_penalty": {
+    "cost_per_km": 1.0,
+    "lost_penalty": 2.0,
+    "avg_lost_rate": 7.425147943576613,
+    "std_lost_rate": 5.156325911317894,
+    "avg_actions": 396.66,
+    "total_lost": 255,
+    "total_successful": 3358
+  },
+  "high_penalty": {
+    "cost_per_km": 1.0,
+    "lost_penalty": 10.0,
+    "avg_lost_rate": 8.220461506166263,
+    "std_lost_rate": 5.218620662173376,
+    "avg_actions": 414.44,
+    "total_lost": 288,
+    "total_successful": 3316
+  },
+  "cheap_aggressive": {
+    "cost_per_km": 0.5,
+    "lost_penalty": 10.0,
+    "avg_lost_rate": 6.134542806905219,
+    "std_lost_rate": 4.027297536887631,
+    "avg_actions": 377.44,
+    "total_lost": 220,
+    "total_successful": 3435
+  },
+  "expensive_conservative": {
+    "cost_per_km": 2.0,
+    "lost_penalty": 2.0,
+    "avg_lost_rate": 7.529744924646943,
+    "std_lost_rate": 5.426709237857836,
+    "avg_actions": 407.26,
+    "total_lost": 262,
+    "total_successful": 3351
+  }
+}

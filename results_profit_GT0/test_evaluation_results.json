@@ -1,0 +1,46 @@
+{
+  "None": {
+    "avg_profit": 102.9379651116872,
+    "std_profit": 36.10236571067914,
+    "avg_lost_rate": 6.980482823478532,
+    "std_lost_rate": 4.614401904803338,
+    "avg_revenue": 167.95,
+    "avg_truck_cost": 39.71203488831278,
+    "avg_lost_cost": 25.3,
+    "min_profit": 18.97525599884912,
+    "max_profit": 173.33272172272933
+  },
+  "ELU": {
+    "avg_profit": 102.99705449180378,
+    "std_profit": 32.95643908350295,
+    "avg_lost_rate": 7.879036707889048,
+    "std_lost_rate": 4.216696859517365,
+    "avg_revenue": 165.9,
+    "avg_truck_cost": 34.90294550819622,
+    "avg_lost_cost": 28.0,
+    "min_profit": 38.99252988660748,
+    "max_profit": 174.40408810684625
+  },
+  "Leaky ReLU": {
+    "avg_profit": 99.23075908533512,
+    "std_profit": 40.246487979303396,
+    "avg_lost_rate": 6.979355854398916,
+    "std_lost_rate": 4.643819144469409,
+    "avg_revenue": 168.2,
+    "avg_truck_cost": 44.46924091466488,
+    "avg_lost_cost": 24.5,
+    "min_profit": 28.842602892686678,
+    "max_profit": 186.6354342169189
+  },
+  "PReLU": {
+    "avg_profit": 109.11904394780399,
+    "std_profit": 38.14033091337681,
+    "avg_lost_rate": 5.964079670704199,
+    "std_lost_rate": 4.422821885606226,
+    "avg_revenue": 171.6,
+    "avg_truck_cost": 41.980956052196,
+    "avg_lost_cost": 20.5,
+    "min_profit": 27.459497460626395,
+    "max_profit": 184.83149926436585
+  }
+}
