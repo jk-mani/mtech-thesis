@@ -91,12 +91,14 @@ def train_multi_agent_dqn(
     # Initialize simulator
     print(f"\nInitializing continuous-time simulator...")
     print(f"  Stations: {num_stations}, Vehicles: {num_vehicles}, Capacity: {vehicle_capacity}")
+    print(f"  Fill levels: {[f'{f*100:.0f}%' for f in fill_levels_used]}")
     base_dir = Path(__file__).parent.parent.parent / 'data' / 'synthetic' / gt_name
     simulator = ContinuousTimeSimulator(
         network_file=str(base_dir / f'{gt_name}_station_network.json'),
         trips_file=str(base_dir / f'{gt_name}_trips_train.csv'),
         num_vehicles=num_vehicles,
-        vehicle_capacity=vehicle_capacity
+        vehicle_capacity=vehicle_capacity,
+        fill_levels=fill_levels_used
     )
     
     # Initialize agent

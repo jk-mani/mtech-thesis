@@ -37,7 +37,7 @@ class ContinuousTimeSimulator:
     Based on Base Paper Algorithm 1.
     """
     
-    def __init__(self, network_file, trips_file, num_vehicles=4, vehicle_capacity=40):
+    def __init__(self, network_file, trips_file, num_vehicles=4, vehicle_capacity=40, fill_levels=None):
         """
         Initialize simulator.
         
@@ -46,7 +46,10 @@ class ContinuousTimeSimulator:
             trips_file: Path to trips CSV  
             num_vehicles: Number of rebalancing vehicles
             vehicle_capacity: Capacity of each vehicle
+            fill_levels: List of fill levels for rebalancing (default: [0.10, 0.50, 0.90])
         """
+        # Store fill levels (used in _rebalance_station)
+        self.fill_levels = fill_levels if fill_levels is not None else [0.10, 0.50, 0.90]
         # Load network
         with open(network_file) as f:
             self.network_data = json.load(f)
@@ -320,11 +323,10 @@ class ContinuousTimeSimulator:
         
         Args:
             vehicle: Vehicle object
-            fill_level_idx: 0=10%, 1=50%, 2=90%
+            fill_level_idx: Index into self.fill_levels (0, 1, or 2)
         """
-        # Fill levels from paper
-        fill_levels = [0.10, 0.50, 0.90]
-        target_fill = fill_levels[fill_level_idx]
+        # Use configured fill levels
+        target_fill = self.fill_levels[fill_level_idx]
         
         station = self.stations[vehicle.current_station]
         target_inventory = int(target_fill * station.capacity)

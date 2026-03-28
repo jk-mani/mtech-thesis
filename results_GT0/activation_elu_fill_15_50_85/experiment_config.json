@@ -1,11 +1,11 @@
 {
   "gt_name": "GT0",
   "fill_levels": [
-    0.0,
+    0.15,
     0.5,
-    1.0
+    0.85
   ],
   "optimizer": "adam",
   "hidden_activation": "relu",
-  "output_activation": null
+  "output_activation": "elu"
 }

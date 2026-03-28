@@ -74,14 +74,17 @@ def evaluate_agent(
     print(f"  Network file: {base_dir / f'{gt_name}_station_network.json'}")
     print(f"  Trips file: {base_dir / f'{gt_name}_trips_test.csv'}")
     
+    fill_levels_used = fill_levels if fill_levels is not None else [0.10, 0.50, 0.90]
     simulator = ContinuousTimeSimulator(
         network_file=str(base_dir / f'{gt_name}_station_network.json'),
         trips_file=str(base_dir / f'{gt_name}_trips_test.csv'),  # ← TEST DATA!
         num_vehicles=num_vehicles,
-        vehicle_capacity=vehicle_capacity
+        vehicle_capacity=vehicle_capacity,
+        fill_levels=fill_levels_used
     )
     print(f"✓ Simulator initialized")
     print(f"  Stations: {num_stations}, Vehicles: {num_vehicles}, Capacity: {vehicle_capacity}")
+    print(f"  Fill levels: {[f'{f*100:.0f}%' for f in fill_levels_used]}")
     
     # Initialize agent
     print(f"\n[2/4] Initializing agent...")

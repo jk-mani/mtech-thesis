@@ -29,7 +29,8 @@ def train_profit_simple(
     num_vehicles=2,
     vehicle_capacity=15,
     hidden_activation='relu',
-    output_activation=None
+    output_activation=None,
+    fill_levels=None
 ):
     """Train with profit-based rewards using existing simulator."""
     
@@ -57,16 +58,19 @@ def train_profit_simple(
         network_data = json.load(f)
     distance_matrix = np.array(network_data['distance_matrix'])
     
-    # Initialize simulator
+    # Initialize simulator with fill_levels
+    fill_levels_used = fill_levels if fill_levels is not None else [0.10, 0.50, 0.90]
+    print(f"Fill levels: {[f'{f*100:.0f}%' for f in fill_levels_used]}")
+    
     simulator = ContinuousTimeSimulator(
         network_file=network_file,
         trips_file=trips_file,
         num_vehicles=num_vehicles,
-        vehicle_capacity=vehicle_capacity
+        vehicle_capacity=vehicle_capacity,
+        fill_levels=fill_levels_used
     )
     
     # Initialize agent
-    fill_levels = [0.10, 0.50, 0.90]
     agent = MultiAgentDQN(
         num_stations=num_stations,
         num_vehicles=num_vehicles,
@@ -77,7 +81,7 @@ def train_profit_simple(
         gamma=0.99,
         total_timesteps=total_timesteps,
         exploration_fraction=0.5,
-        fill_levels=fill_levels,
+        fill_levels=fill_levels_used,
         hidden_activation=hidden_activation,
         output_activation=output_activation
     )
@@ -237,10 +241,16 @@ if __name__ == "__main__":
     parser.add_argument('--lost-penalty', type=float, default=5.00)
     parser.add_argument('--hidden-activation', default='relu', choices=['relu', 'leaky_relu', 'prelu', 'elu'])
     parser.add_argument('--output-activation', default=None, choices=[None, 'none', 'leaky_relu', 'prelu', 'elu'])
+    parser.add_argument('--fill-levels', type=str, default=None, help='Comma-separated fill levels (e.g., "10,50,90")')
     args = parser.parse_args()
     
     # Handle 'none' string as None
     output_act = None if args.output_activation in [None, 'none'] else args.output_activation
+    
+    # Parse fill levels
+    fill_levels = None
+    if args.fill_levels:
+        fill_levels = [float(x) / 100.0 for x in args.fill_levels.split(',')]
     
     train_profit_simple(
         gt_name=args.gt,
@@ -254,5 +264,6 @@ if __name__ == "__main__":
         num_vehicles=args.num_vehicles,
         vehicle_capacity=args.vehicle_capacity,
         hidden_activation=args.hidden_activation,
-        output_activation=output_act
+        output_activation=output_act,
+        fill_levels=fill_levels
     )

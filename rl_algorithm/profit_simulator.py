@@ -84,7 +84,8 @@ class ProfitSimulator:
         trips_file: str,
         num_vehicles: int = 2,
         vehicle_capacity: int = 15,
-        profit_params: Optional[ProfitParameters] = None
+        profit_params: Optional[ProfitParameters] = None,
+        fill_levels: list = None
     ):
         """
         Initialize profit-based simulator.
@@ -95,7 +96,10 @@ class ProfitSimulator:
             num_vehicles: Number of rebalancing vehicles
             vehicle_capacity: Bike capacity per vehicle
             profit_params: Economic parameters for profit calculation
+            fill_levels: List of fill levels for rebalancing (default: [0.10, 0.50, 0.90])
         """
+        # Store fill levels (used in _rebalance_station)
+        self.fill_levels = fill_levels if fill_levels is not None else [0.10, 0.50, 0.90]
         # Load network
         with open(network_file) as f:
             self.network_data = json.load(f)
@@ -398,8 +402,8 @@ class ProfitSimulator:
         Returns:
             tuple: (bikes_loaded, bikes_unloaded)
         """
-        fill_levels = [0.10, 0.50, 0.90]
-        target_fill = fill_levels[fill_level_idx]
+        # Use configured fill levels
+        target_fill = self.fill_levels[fill_level_idx]
         
         station = self.stations[vehicle.current_station]
         target_inventory = int(target_fill * station.capacity)
