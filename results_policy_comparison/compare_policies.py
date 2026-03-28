@@ -1,52 +1,3 @@
-#!/bin/bash
-# Lost-Demand vs Profit Policy Comparison for GT0
-# Evaluates both policies on same test scenarios and compares behavior
-
-set -e
-
-# Configuration
-GT_NAME="GT0"
-NUM_EPISODES=50
-BASE_DIR="results_policy_comparison"
-
-echo "=============================================="
-echo "Lost-Demand vs Profit Policy Comparison"
-echo "GT: $GT_NAME | Test Episodes: $NUM_EPISODES"
-echo "=============================================="
-
-# Create results directory
-mkdir -p "$BASE_DIR"
-
-# Check if models exist
-# Best configurations from experiments:
-# Lost-Demand: ELU with 15-50-85 fill levels (best: 2.61% lost demand)
-# Profit: Leaky ReLU with 10-50-90 fill levels (best: $61.25)
-LOST_DEMAND_MODEL="results_GT0/activation_elu_fill_15_50_85/GT0_multi_agent_dqn_final.pth"
-PROFIT_MODEL="results_profit_GT0/activation_leaky_relu_fill_10_50_90/GT0_profit_dqn_best.pth"
-
-# Fill levels used by each model
-LOST_DEMAND_FILL="15,50,85"
-PROFIT_FILL="10,50,90"
-
-if [ ! -f "$LOST_DEMAND_MODEL" ]; then
-    echo "❌ Lost-demand model not found: $LOST_DEMAND_MODEL"
-    echo "   Run ./run_gt0_experiments.sh first"
-    exit 1
-fi
-
-if [ ! -f "$PROFIT_MODEL" ]; then
-    echo "❌ Profit model not found: $PROFIT_MODEL"
-    echo "   Run ./run_profit_gt0_experiments.sh first"
-    exit 1
-fi
-
-echo ""
-echo "Models found:"
-echo "  Lost-Demand: $LOST_DEMAND_MODEL"
-echo "  Profit:      $PROFIT_MODEL"
-
-# Create comparison evaluation script
-cat > "${BASE_DIR}/compare_policies.py" << 'PYTHON_SCRIPT'
 """
 Compare Lost-Demand DQN vs Profit-Based DQN policies on same test scenarios.
 """
@@ -240,22 +191,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-PYTHON_SCRIPT
-
-echo ""
-echo "Running policy comparison..."
-echo ""
-
-python "${BASE_DIR}/compare_policies.py" \
-    --lost-demand-model "$LOST_DEMAND_MODEL" \
-    --profit-model "$PROFIT_MODEL" \
-    --lost-demand-fill "$LOST_DEMAND_FILL" \
-    --profit-fill "$PROFIT_FILL" \
-    --episodes "$NUM_EPISODES" \
-    --output "${BASE_DIR}/comparison_results.json"
-
-echo ""
-echo "=============================================="
-echo "Policy comparison complete!"
-echo "Results saved in: $BASE_DIR/"
-echo "=============================================="
