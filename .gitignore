@@ -35,3 +35,7 @@ Thumbs.db
 .env
 .env.local
 Profit_DQN_Comparison.pptx
+
+# Local archives / dumps (too large for GitHub)
+legacy/old_results.tar.gz
+*.stdout

@@ -1,0 +1,11 @@
+{
+  "gt_name": "GT0",
+  "fill_levels": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "optimizer": "adam",
+  "hidden_activation": "relu",
+  "output_activation": "leaky_relu"
+}

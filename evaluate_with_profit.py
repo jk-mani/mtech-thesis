@@ -37,30 +37,42 @@ def evaluate_policy_with_profit(
     cost_per_km=1.0,
     lost_penalty=5.0,
     trip_base_fare=1.0,
-    trip_per_km=0.75
+    trip_per_km=0.75,
+    fill_levels=None,
+    hidden_activation='relu',
+    num_stations=10,
+    num_vehicles=2,
+    vehicle_capacity=15,
 ):
-    """Evaluate a model with full profit tracking."""
-    
+    """Evaluate a model with full profit tracking on the GT0 test set.
+
+    `fill_levels` and `hidden_activation` MUST match what the model was trained
+    with, otherwise the network architecture won't match the saved weights.
+    """
+    if fill_levels is None:
+        fill_levels = [0.10, 0.50, 0.90]
+
     base_dir = Path(__file__).parent.parent / 'data' / 'synthetic' / gt_name
     network_file = str(base_dir / f'{gt_name}_station_network.json')
     trips_file = str(base_dir / f'{gt_name}_trips_test.csv')
-    
+
     with open(network_file) as f:
         network_data = json.load(f)
-    
+
     simulator = ContinuousTimeSimulator(
         network_file=network_file,
         trips_file=trips_file,
-        num_vehicles=2,
-        vehicle_capacity=15
+        num_vehicles=num_vehicles,
+        vehicle_capacity=vehicle_capacity,
+        fill_levels=fill_levels,
     )
-    
+
     agent = MultiAgentDQN(
-        num_stations=10,
-        num_vehicles=2,
-        hidden_activation='relu',
+        num_stations=num_stations,
+        num_vehicles=num_vehicles,
+        hidden_activation=hidden_activation,
         output_activation=output_activation,
-        fill_levels=[0.10, 0.50, 0.90]
+        fill_levels=fill_levels,
     )
     agent.load(model_path)
     
